@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>乐鱼体育 · 聚焦热力与竞技</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #faf7f2;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans SC", "Helvetica Neue", sans-serif;
+            line-height: 1.75;
+            color: #2c2b28;
+            padding: 2rem 1.2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page-card {
+            max-width: 860px;
+            width: 100%;
+            background: #fffcf9;
+            border-radius: 32px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(0, 0, 0, 0.02);
+            padding: 3rem 2.5rem;
+            transition: box-shadow 0.2s;
+        }
+        @media (max-width: 600px) {
+            body { padding: 1rem 0.6rem; }
+            .page-card { padding: 2rem 1.2rem; border-radius: 24px; }
+        }
+
+        /* 排版细节 — 故事叙述感 */
+        .opening {
+            font-size: 1.2rem;
+            font-weight: 380;
+            letter-spacing: 0.01em;
+            color: #5f5b55;
+            border-left: 4px solid #d9cdb8;
+            padding-left: 1.4rem;
+            margin-bottom: 2.2rem;
+            line-height: 1.6;
+            quotes: "“" "”";
+        }
+        .opening::before {
+            content: "“";
+            font-size: 2rem;
+            color: #b7aa93;
+            margin-right: 0.2rem;
+            vertical-align: middle;
+        }
+        .opening::after {
+            content: "”";
+            font-size: 2rem;
+            color: #b7aa93;
+            margin-left: 0.1rem;
+            vertical-align: bottom;
+        }
+
+        h1 {
+            font-size: 2.1rem;
+            font-weight: 460;
+            letter-spacing: -0.02em;
+            margin: 0 0 0.3rem 0;
+            color: #25221d;
+            line-height: 1.2;
+        }
+        .subhead {
+            font-size: 0.95rem;
+            color: #7e786e;
+            margin-bottom: 2.4rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #ece3d9;
+            font-weight: 380;
+        }
+        p {
+            margin-bottom: 1.4rem;
+            font-size: 1rem;
+            color: #3f3b35;
+        }
+        a {
+            color: #865f3a;
+            text-decoration: none;
+            font-weight: 450;
+            border-bottom: 1px dashed #d5c1ab;
+            transition: border 0.15s, background 0.15s;
+            padding: 0 0.1rem;
+        }
+        a:hover {
+            border-bottom: 1px solid #865f3a;
+            background: #f3ede6;
+        }
+
+        /* 引用块 — 温和提示 */
+        .insight-box {
+            background: #f3ede6;
+            padding: 1.6rem 2rem;
+            border-radius: 20px;
+            margin: 2.2rem 0;
+            font-size: 0.95rem;
+            color: #4c453c;
+            border-left: 6px solid #b3a085;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .insight-box strong {
+            color: #4d3e2d;
+            font-weight: 520;
+            display: block;
+            margin-bottom: 0.4rem;
+            font-size: 1.05rem;
+        }
+        .insight-box p {
+            margin-bottom: 0.2rem;
+        }
+
+        /* 特点列表 — 散点式，非典型卡片 */
+        .traits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 2rem;
+            margin: 2rem 0 1.8rem 0;
+            padding: 0;
+            list-style: none;
+        }
+        .traits li {
+            flex: 1 1 200px;
+            background: transparent;
+            padding: 0.2rem 0 0.2rem 1.2rem;
+            border-left: 3px solid #d9cdb8;
+            font-weight: 390;
+            line-height: 1.6;
+            color: #3f3b35;
+        }
+        .traits li span {
+            display: block;
+            font-weight: 460;
+            color: #4a3f2f;
+            margin-bottom: 0.1rem;
+        }
+
+        /* FAQ 摘要 — 紧凑 */
+        .faq-mini {
+            margin: 2.5rem 0 1rem 0;
+            border-top: 1px solid #e6dbce;
+            padding-top: 1.8rem;
+        }
+        .faq-item {
+            margin-bottom: 1rem;
+        }
+        .faq-q {
+            font-weight: 500;
+            color: #3d352b;
+            margin-bottom: 0.3rem;
+            display: flex;
+            gap: 0.4rem;
+        }
+        .faq-q::before {
+            content: "▹";
+            color: #a59078;
+        }
+        .faq-a {
+            padding-left: 1.4rem;
+            color: #5f5850;
+            font-size: 0.94rem;
+            border-left: 2px solid #e1d4c4;
+            margin-left: 0.4rem;
+            padding-bottom: 0.6rem;
+        }
+
+        /* 结尾段落 */
+        .closing {
+            margin-top: 2.4rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #ece3d9;
+            font-size: 0.98rem;
+            color: #5f5850;
+            font-style: normal;
+        }
+
+        .soft-link-sentence {
+            background: #f9f4ed;
+            padding: 0.2rem 0.6rem 0.2rem 0.3rem;
+            border-radius: 12px;
+            display: inline-block;
+            margin: 0.1rem 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e7ddd0;
+            margin: 2rem 0 1.2rem;
+        }
+
+        /* 非常规分隔装饰 */
+        .divider-dot {
+            text-align: center;
+            letter-spacing: 0.8rem;
+            color: #d5c6b2;
+            font-size: 1rem;
+            margin: 0.8rem 0;
+        }
+        .divider-dot::after {
+            content: "· · ·";
+        }
+    </style>
+</head>
+<body>
+<div class="page-card">
+
+    <!-- 开场短句：故事入口 -->
+    <div class="opening">
+        每一场比赛，都藏着一根紧绷的弦。从第一声哨响到最后一次冲刺，竞技的张力从未减弱。
+    </div>
+
+    <h1>乐鱼体育</h1>
+    <div class="subhead">围绕热力 · 结构 · 节奏，重述运动叙事</div>
+
+    <!-- 承接段落 —— 从主题内容展开 -->
+    <p>
+        体育的魅力不止于比分板上的数字。它是一连串被精心编排的瞬间——运动员对时机的捕捉、战术在压力下的变形、观众情绪的共同呼吸。<a href="https://web-home-leyu.com.cn">乐鱼体育</a>所聚焦的，正是这些动态之下稳定而清晰的结构：让赛事内容本身成为叙述主体，而非仅仅结果列表。从联赛的轮转规律到单项赛事的节奏起伏，我们试图构建一个更立体的观看坐标系。
+    </p>
+
+    <p>
+        无论你深耕某一项目，还是以更宽泛的视角观察竞技生态，都会发现：信息密度决定理解深度。通过聚合赛事数据、赛程脉络与简要复盘，<a href="https://web-home-leyu.com.cn">乐鱼体育</a>希望提供一个干净而扎实的起点——不堆砌术语，不制造噪音，只把真正值得关注的细节放在你面前。
+    </p>
+
+    <!-- 特点列表：散点式，无卡片边框，有内部标记 -->
+    <ul class="traits">
+        <li><span>赛程结构化</span>赛事时间线按周期与重要度分层，避免信息过载，一眼定位焦点。</li>
+        <li><span>场景化简报</span>每轮/每场附简短战术或节奏观察，非机械数据堆叠，保留比赛氛围。</li>
+        <li><span>跨项目参照</span>在不同运动之间寻找模式相似性——节奏、反击、暂停节点，视角更多元。</li>
+        <li><span>克制更新</span>不追逐每一条边角消息，只呈现经过筛选与梳理的内容板块。</li>
+    </ul>
+
+    <!-- 引用块 / 提示框 —— 温和，带有段落感 -->
+    <div class="insight-box">
+        <strong>◈ 一个观察</strong>
+        <p>顶级赛事中，80% 的转折发生在看似平常的“非得分时刻”——一次成功的防守轮转、一次提前的换人调整。真正理解比赛，往往需要看到分数之外的结构。<br>
+        这也是我们选择用更沉静的方式组织信息的原因：让节奏自己说话。</p>
+    </div>
+
+    <!-- FAQ 摘要 —— 用问与答形式自然收束一部分疑问 -->
+    <div class="faq-mini">
+        <div class="faq-item">
+            <div class="faq-q">内容偏向哪些运动项目？</div>
+            <div class="faq-a">目前以足球、篮球、网球、电竞及部分格斗项目为主线，后续会根据反馈逐步覆盖更多赛事类型。不追求大而全，但力求每条内容都有信息锚点。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">是否提供实时比分或直播跳转？</div>
+            <div class="faq-a"><a href="https://web-home-leyu.com.cn">乐鱼体育</a>以赛事背景、赛程预览及结构化的内容整合为主，不侧重实时刷新。我们更希望成为你观赛前的“参考页”与观赛后的“回顾卡”。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">信息更新频率如何？</div>
+            <div class="faq-a">围绕主要联赛周期进行周更或赛段更新，重大赛事会提前发布结构预览。保持节奏感，不盲目追快。</div>
+        </div>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="closing">
+        竞技的语法一直在演变，但有些东西始终不变：对细节的尊重，对节奏的敏感。<br>
+        希望你在浏览时，也能感受到这种不慌不忙的叙事质地。
+    </div>
+
+    <div class="divider-dot"></div>
+
+    <!-- 最后一行自然嵌入链接，无诱导词汇 -->
+    <p style="font-size: 0.9rem; color: #7e786e; margin-top: 0.6rem;">
+        如果你对赛事结构、赛程梳理或运动叙事本身感兴趣，<a href="https://web-home-leyu.com.cn">乐鱼体育</a>或许是一个值得保存的阅读坐标。
+    </p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://chrisnap-j.github.io/web-home-leyu-com-cn/sitemap.xml
