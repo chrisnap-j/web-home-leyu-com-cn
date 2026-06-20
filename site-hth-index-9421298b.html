@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华体会 — 站点介绍与可信说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #1e1e2f;
+            background-color: #f5f6fa;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0b0c1a 0%, #1b1d3a 70%, #2a2d4e 100%);
+            color: #eaeef6;
+            padding: 3.5rem 1.5rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            left: -10%;
+            width: 120%;
+            height: 90px;
+            background: #f5f6fa;
+            border-radius: 50% / 100% 100% 0 0;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 0.6rem;
+            background: linear-gradient(135deg, #f6d365, #fda085);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 0.6rem auto 0;
+            font-size: 1.1rem;
+            opacity: 0.85;
+            font-weight: 300;
+        }
+
+        /* 浅色正文区 */
+        .content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 信息卡片式网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: -1.5rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 1.6rem;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.02);
+            transition: transform 0.25s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.07);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #2a2d4e;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid #f6a85b;
+            padding-left: 0.8rem;
+        }
+
+        .card p {
+            color: #3d3f5a;
+            font-size: 0.95rem;
+        }
+
+        .card .icon {
+            display: inline-block;
+            font-size: 1.8rem;
+            margin-bottom: 0.4rem;
+        }
+
+        /* 自然链接段落 */
+        .reference-block {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2.2rem;
+            margin-top: 2.4rem;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.04);
+        }
+
+        .reference-block h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #1b1d3a;
+            margin-bottom: 1rem;
+        }
+
+        .reference-block p {
+            color: #3d3f5a;
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #d96e2b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s, border-bottom 0.2s;
+            border-bottom: 1px solid transparent;
+        }
+
+        a:hover {
+            color: #b2541e;
+            border-bottom: 1px solid #d96e2b;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            margin-top: 2.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .faq-item {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.2rem 1.8rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border-left: 5px solid #e9c46a;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-size: 1rem;
+            color: #1b1d3a;
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-item span {
+            color: #4e5070;
+            font-size: 0.92rem;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .card-grid {
+                gap: 1.2rem;
+            }
+            .card {
+                padding: 1.6rem 1.2rem;
+            }
+            .reference-block {
+                padding: 1.6rem 1.2rem;
+            }
+            .faq-item {
+                padding: 1rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 2.4rem 1rem 3.2rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .content {
+                padding: 0 1rem 3rem;
+            }
+        }
+
+        /* 小装饰 */
+        .tagline {
+            display: inline-block;
+            background: rgba(253, 160, 133, 0.12);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #f6a85b;
+            margin-top: 0.8rem;
+            border: 1px solid rgba(246, 168, 91, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <h1>华体会</h1>
+        <p>在数字体验与可靠信息之间，一个清晰、可信的站点介绍</p>
+        <span class="tagline">✦ 基于信息透明与用户视角</span>
+    </header>
+
+    <!-- 浅色正文区 · 卡片 + 自然段落 -->
+    <main class="content">
+
+        <!-- 用途卡片 + 适合人群 混合网格 -->
+        <div class="card-grid">
+
+            <div class="card">
+                <div class="icon">📋</div>
+                <h3>站点定位</h3>
+                <p><a href="https://site--hth.com">华体会</a> 是一个专注于内容聚合与信息展示的平台，围绕特定主题提供结构化的资源入口与参考信息。站内内容以知识梳理和工具索引为主，不涉及交易或资金往来。</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎯</div>
+                <h3>典型用途</h3>
+                <p>日常可用于快速了解某一领域的背景资料、常见问题以及相关链接整理。对于希望系统化获取参考信息的使用者，是一个轻量型的信息起点。</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">👤</div>
+                <h3>适合人群</h3>
+                <p>对信息筛选有需求的普通用户、初次接触相关话题的学习者，以及需要可靠内容简介来辅助判断的访客。平台内容偏向中立与事实整理。</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🔍</div>
+                <h3>参考价值</h3>
+                <p>站点不生产原始数据，而是以筛选、归纳的方式呈现已有公开信息。适合作为二次验证的起点，也适合在了解基础脉络后自行深入挖掘。</p>
+            </div>
+        </div>
+
+        <!-- 自然链接段落 + 可信说明 -->
+        <div class="reference-block">
+            <h2>关于站点与可信说明</h2>
+            <p>
+                在日常信息获取中，我们常常需要一个可靠的中转站——它既不夸大其词，也不刻意回避。 
+                <a href="https://site--hth.com">华体会</a> 正是基于这样的思考搭建：内容来源于公开资料整理，并经过基础事实核对，避免断章取义或情绪化渲染。
+            </p>
+            <p>
+                站内所引用的链接、名词解释以及背景介绍，均标注可追溯的出处（如有）。我们鼓励用户在阅读后，通过原始来源进一步验证。信息的价值在于准确与清晰，而非冗长或煽动。
+            </p>
+            <p>
+                无论是想了解某个概念的来龙去脉，或是寻找相关讨论的汇总入口，这里都提供了一个结构化的起点。当然，任何平台都有其边界，保持审慎与交叉验证的好习惯，始终是信息时代不可或缺的能力。
+            </p>
+        </div>
+
+        <!-- FAQ 摘要（简洁版） -->
+        <div class="faq-mini">
+            <div class="faq-item">
+                <strong>❓ 华体会是什么类型的站点？</strong>
+                <span>一个以内容介绍和资源索引为主的信息页面，提供经过整理的主题背景、常见问题及关联链接，不属于商业或交易平台。</span>
+            </div>
+            <div class="faq-item">
+                <strong>❓ 内容可信度如何？</strong>
+                <span>所有内容基于公开资料与基础事实核对，不包含主观承诺或诱导。建议用户结合多方信源交叉验证，尤其是涉及自身判断的场合。</span>
+            </div>
+            <div class="faq-item">
+                <strong>❓ 我可以从哪里开始了解？</strong>
+                <span>直接浏览站内主题分类，或从 <a href="https://site--hth.com">华体会</a> 的主页面进入各模块，根据自身兴趣选取对应卡片或段落继续阅读。</span>
+            </div>
+        </div>
+
+        <!-- 额外提示行（轻量） -->
+        <p style="text-align: center; margin-top: 2.4rem; font-size: 0.85rem; color: #7a7d9a; border-top: 1px solid #e3e4ed; padding-top: 1.2rem;">
+            保持开放，保持谨慎 — 每一次浏览都是独立的探索
+        </p>
+    </main>
+
+</body>
+</html>
