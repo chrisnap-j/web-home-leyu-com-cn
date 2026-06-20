@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>安博体育 · 稳定入口</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f5f8fc;
+      color: #1e2b3c;
+      line-height: 1.6;
+      padding: 0;
+    }
+
+    /* 顶部导航 */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1.2rem;
+      background: white;
+      border-bottom: 1px solid #e2e8f0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .nav-brand {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #0b6e6e;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2d4b5c;
+      font-size: 0.95rem;
+      font-weight: 450;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: #0f7d7d;
+    }
+
+    /* hero 区域 */
+    .hero {
+      background: linear-gradient(145deg, #e6f2f2 0%, #d1e6e6 100%);
+      padding: 3rem 1.5rem 2.8rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 550;
+      color: #143a3a;
+      letter-spacing: -0.3px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: 1rem auto 0;
+      color: #2c4b4b;
+      font-size: 1.05rem;
+    }
+
+    /* 通用容器 */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.2rem;
+    }
+
+    /* 场景网格卡片 */
+    .section-title {
+      margin: 2.5rem 0 1.2rem;
+      font-weight: 520;
+      font-size: 1.4rem;
+      color: #153e3e;
+      border-left: 4px solid #0b7a7a;
+      padding-left: 0.8rem;
+    }
+
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 1.8rem 1.4rem 1.6rem;
+      box-shadow: 0 8px 18px rgba(10, 60, 60, 0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #e1edef;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(10, 80, 80, 0.08);
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #0b5f5f;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #2f4858;
+    }
+
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.4rem;
+      display: inline-block;
+    }
+
+    /* 常见说明 (FAQ 摘要) */
+    .faq-block {
+      background: white;
+      border-radius: 20px;
+      padding: 1.8rem 1.6rem;
+      margin: 2.2rem 0 2.8rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      border: 1px solid #dae9ea;
+    }
+
+    .faq-item {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #ecf3f4;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 520;
+      color: #124747;
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .faq-q::before {
+      content: "▹";
+      color: #0d8282;
+      font-weight: 600;
+    }
+
+    .faq-a {
+      color: #3a5a5a;
+      font-size: 0.95rem;
+      padding-left: 1.4rem;
+    }
+
+    .faq-a a {
+      color: #0b6b6b;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 450;
+    }
+
+    .faq-a a:hover {
+      color: #0b4f4f;
+    }
+
+    /* 稳定入口说明 */
+    .entry-note {
+      background: #e3f0ef;
+      border-radius: 30px;
+      padding: 1.6rem 1.8rem;
+      margin: 2rem 0 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .entry-note p {
+      flex: 1 1 200px;
+      color: #1b4343;
+    }
+
+    .entry-note .tag {
+      background: white;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      color: #0d6b6b;
+      border: 1px solid #b7d6d6;
+      white-space: nowrap;
+      font-size: 0.9rem;
+    }
+
+    /* 页脚 */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem 1.8rem;
+      color: #5b7272;
+      font-size: 0.85rem;
+      border-top: 1px solid #dce9ea;
+      background: white;
+      margin-top: 1rem;
+    }
+
+    footer a {
+      color: #0b6b6b;
+      text-decoration: none;
+      font-weight: 460;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* 移动端优化 */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+      .nav-links {
+        gap: 1rem;
+      }
+      .nav-links a {
+        font-size: 0.88rem;
+      }
+      .faq-block {
+        padding: 1.4rem 1rem;
+      }
+      .entry-note {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部导航 -->
+  <nav>
+    <span class="nav-brand">安博体育</span>
+    <ul class="nav-links">
+      <li><a href="#">场景</a></li>
+      <li><a href="#">说明</a></li>
+      <li><a href="#">帮助</a></li>
+    </ul>
+  </nav>
+
+  <!-- hero 介绍 -->
+  <section class="hero">
+    <h1>稳定入口，自在浏览</h1>
+    <p>安博体育围绕日常使用习惯，提供轻量、可靠的页面指引。无论是快速了解内容还是查找常用路径，这里都保持清晰节奏。</p>
+  </section>
+
+  <div class="container">
+
+    <!-- 三个场景模块 -->
+    <h2 class="section-title">三个日常场景</h2>
+    <div class="scenario-grid">
+      <div class="card">
+        <span class="card-icon">🌐</span>
+        <h3>信息速览</h3>
+        <p>打开页面即能看清主要结构，不需要反复跳转。导航与内容分区自然衔接，适合日常快速浏览。</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📁</span>
+        <h3>功能指引</h3>
+        <p>卡片式布局将不同模块独立呈现，每个区域都有明确标注。无论使用哪种设备，布局都会跟随适应。</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🔍</span>
+        <h3>常见问题摘要</h3>
+        <p>页面下方集中展示典型疑问与简要回答。遇到不确定的地方，可以先看看 FAQ 部分提供的说明。</p>
+      </div>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <div class="faq-block">
+      <div class="faq-item">
+        <div class="faq-q">这个页面和安博体育是什么关系？</div>
+        <div class="faq-a">本页面是围绕 <a href="https://web-anbosports.com">安博体育</a> 制作的一份轻量介绍页，帮助新朋友快速了解平台的结构与常用模块，所有核心内容均指向官方站点。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">页面上的链接是否安全？</div>
+        <div class="faq-a">所有指向 <a href="https://web-anbosports.com">安博体育</a> 的链接均使用标准 HTTPS 协议，日常使用中请注意核对网址前缀，避免仿冒站点。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">移动端显示效果如何？</div>
+        <div class="faq-a">本页面采用响应式网格与弹性排版，在手机、平板和桌面浏览器上均可获得一致阅读体验。卡片间距和文字大小会根据屏幕自动调整。</div>
+      </div>
+    </div>
+
+    <!-- 稳定入口说明 -->
+    <div class="entry-note">
+      <p><strong>页面说明：</strong> 本页为导航型介绍页，内容聚焦在结构展示与常见疑问。如果你想直接了解 <a href="https://web-anbosports.com" style="text-decoration:underline;color:#0d6b6b;">安博体育</a> 的更多细节，可随时通过页内链接前往主站。</p>
+      <span class="tag">稳定入口</span>
+    </div>
+
+  </div>
+
+  <!-- 页脚 -->
+  <footer>
+    <p>页面内容仅供参考，具体功能以 <a href="https://web-anbosports.com">安博体育</a> 官方发布为准。</p>
+    <p style="margin-top: 0.6rem; opacity: 0.7;">© 页面索引 · 日常更新</p>
+  </footer>
+
+</body>
+</html>
